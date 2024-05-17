@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+import 'ejercicio02.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Ejercicio02',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: Producto(
+        nombre: 'Iphone 15 pro Max',
+        precio: '\$7000',
+        descripcion: 'El ultimo iphone del mercado a tus manos.',
+        imagenUrl: 'https://tiendasishop.com/media/catalog/product/i/p/iphone15_pink_pdp_image_position-1__coes.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700',
+      ),
+    );
+  }
+}
