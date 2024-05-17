@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Ejercicio 01',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ListaConImagenes(),
+    );
+  }
+}
+
+class ListaConImagenes extends StatelessWidget {
+  final List<Map<String, dynamic>> elementos = [
+    {
+      'categoria': 'Alimentos',
+      'nombre': 'Tomate',
+      'imagen': 'assets/images/tomate.jpg',
+      'fuente': 'OpenSans',
+    },
+    {
+      'categoria': 'Alimentos',
+      'nombre': 'Platano',
+      'imagen': 'assets/images/platano.jpg',
+      'fuente': 'OpenSans',
+    },
+    {
+      'categoria': 'Animales',
+      'nombre': 'Loro',
+      'imagen': 'assets/images/loro.jpg',
+      'fuente': 'Lato',
+    },
+    {
+      'categoria': 'Animales',
+      'nombre': 'Gato',
+      'imagen': 'assets/images/gato.jpg',
+      'fuente': 'Lato',
+    },
+    {
+      'categoria': 'Lugares',
+      'nombre': 'Lima',
+      'imagen': 'assets/images/lima.jpg',
+      'fuente': 'Ubuntu',
+    },
+    {
+      'categoria': 'Lugares',
+      'nombre': 'Trujillo',
+      'imagen': 'assets/images/trujillo.jpg',
+      'fuente': 'Ubuntu',
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Ejercicio 01'),
+      ),
+      body: ListView.builder(
+        itemCount: elementos.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: elementos[index]['imagen'].startsWith('http')
+                ? Image.network(elementos[index]['imagen'])
+                : Image.asset(elementos[index]['imagen']),
+            title: Text(
+              elementos[index]['nombre'],
+              style: TextStyle(
+                fontFamily: elementos[index]['fuente'],
+              ),
+            ),
+            subtitle: Text(elementos[index]['categoria']),
+          );
+        },
+      ),
+    );
+  }
+}
